@@ -4,13 +4,22 @@ function [ status ] = initProj(projName,Experiment)
 %   folders get created it accoridance with the structure created in August
 %   2014.
 %
+%   projName:   This will be the base folder that the program will look for
+%               This is gennerally the Name for the Entire Project.
+%
+%   Experiment: This is the name of the experiment inside the project. This
+%               can be the iteration of the project or the name of the
+%               loatcation. Should make this highly identafiable to the
+%               specific data being put inside here. 
+%
 %   Note: Due to the way that the exist function works, this program will
 %   not be able to be case sensitive. meaning that this program will assume
 %   that a folder name is lowercase when checking if it exists, but mkdir 
 %   will be Case sensitive. 
 
 
-root = [filesep, filesep,'ROOT',filesep,'projects'];
+% root = [filesep, filesep,'ROOT',filesep,'projects'];
+root = 'C:\Users\plummt\Documents';
 if exist(root,'dir') == 7
     if exist([root,filesep,projName],'dir') ~= 7
         status = 'project file does not exist';
