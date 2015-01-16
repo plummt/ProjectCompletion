@@ -16,10 +16,11 @@ if nargin == 2
 end
     
 if fileType == 0 % Name is for a data file
-    name = [subjectIdent, '_', datestr(now,'yyyymmdd_HHMM'),getenv('USERNAME')];
+    name = [subjectIdent, '_', datestr(now,'yyyymmdd_HHMM'),'_'...
+            ,getenv('USERNAME')];
 elseif fileType == 1 % Name is for a Analysis Results file
     name = [analysisName,'_',subjectIdent, '_',...
-        datestr(now,'yyyymmdd_HHMM'),,'_',getenv('USERNAME')];
+            datestr(now,'yyyymmdd_HHMM'),'_',getenv('USERNAME')];
 else% this is a catch all for errors  
     error('unknown file type');
 end

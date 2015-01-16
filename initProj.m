@@ -1,4 +1,4 @@
-function [ status ] = initProj(projName,Experiment)
+function [ status ] = initProj(projName,Experiment,root)
 %ProjectInitializaton Creates the folders for a new project as of 08/2015
 %   Run this program when starting a new project to make sure that all the
 %   folders get created it accoridance with the structure created in August
@@ -11,6 +11,8 @@ function [ status ] = initProj(projName,Experiment)
 %               can be the iteration of the project or the name of the
 %               loatcation. Should make this highly identafiable to the
 %               specific data being put inside here. 
+%   root:       This is a Folder location that was added to make it faster
+%               to test the program. 
 %
 %   Note: Due to the way that the exist function works, this program will
 %   not be able to be case sensitive. meaning that this program will assume
@@ -18,8 +20,9 @@ function [ status ] = initProj(projName,Experiment)
 %   will be Case sensitive. 
 
 
-% root = [filesep, filesep,'ROOT',filesep,'projects'];
-root = 'C:\Users\plummt\Documents';
+if nargin == 2
+    root= fullfile([filesep,filesep],'root','projects');
+end
 if exist(root,'dir') == 7
     if exist([root,filesep,projName],'dir') ~= 7
         status = 'project file does not exist';
@@ -75,8 +78,13 @@ if exist(dataExpFolder, 'dir') ~= 7
     mkdir([dataExpFolder,filesep,'Data-Enviroment']);
     mkdir([dataExpFolder,filesep,'Data-Enviroment',filesep,'Originals']);
     mkdir([dataExpFolder,filesep,'Data-Enviroment',filesep,'Work In Progress']);
+    mkdir([dataExpFolder,filesep,'Data-Enviroment',filesep,'Work In Progress',filesep,'Editied Data']);
+    mkdir([dataExpFolder,filesep,'Data-Enviroment',filesep,'Work In Progress',filesep,'Analysis Results']);
+    mkdir([dataExpFolder,filesep,'Data-Enviroment',filesep,'Work In Progress',filesep,'Meta-Analysis']);
     mkdir([dataExpFolder,filesep,'Data-People']);
     mkdir([dataExpFolder,filesep,'Data-People',filesep,'Originals']);
+    mkdir([dataExpFolder,filesep,'Data-People',filesep,'Originals',filesep,'Device']);
+    mkdir([dataExpFolder,filesep,'Data-People',filesep,'Originals',filesep,'Logs']);
     mkdir([dataExpFolder,filesep,'Data-People',filesep,'Work In Progress']);
     mkdir([dataExpFolder,filesep,'Data-People',filesep,'Work In Progress',filesep,'Editied Data']);
     mkdir([dataExpFolder,filesep,'Data-People',filesep,'Work In Progress',filesep,'Analysis Results']);
